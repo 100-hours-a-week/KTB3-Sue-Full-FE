@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아무말 대잔치</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="../styles/postWrite.css">
+    <script type="module" src="/src/utils/backButton.js"></script>
+</head>
+<body>
+    <div class="header">
+        <button class="backButton">&lt;</button>
+        <p class="title">아무 말 대잔치</p>
+    </div>
+    <div class="post-write-container">
+        <p class="post-title">게시글 작성</p>
+        <form class="post-write-form">
+            <div class="post-write-input-container">
+                <label>제목*</label>
+                <input name="title" type="text" maxlength="26" placeholder="제목을 입력해주세요. (최대 26글자)">
+            </div>
+            <div class="post-write-input-container">
+                <label>내용*</label>
+                <textarea name="content" placeholder="내용을 입력해주세요"></textarea>
+            </div>
+            <div class="post-write-input-container">
+                <label>이미지</label>
+                <input type="file">
+            </div>
+        </form>
+        <button class="submitButton" type="submit">완료</button>
+    </div>
+</body>
+</html>

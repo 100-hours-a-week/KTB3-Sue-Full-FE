@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아무말 대잔치</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="../styles/posts.css">
+</head>
+<body>
+     <div class="header">
+        <p class="title">아무 말 대잔치</p>
+        <div class="user-profile-image"></div>
+    </div>
+    <div class="main-container">
+        <div class="welcomeText">
+            <p>
+                안녕하세요,
+            </p>
+            <p>아무 말 대잔치 <b>게시판</b>입니다.</p>
+        </div>
+        <div class="post-section">
+            <div class="post-list">
+                <button class="write-post-button" onclick="location.href=`/src/pages/postWrite.html`">게시글 작성</button>
+                <div class="post" onclick="location.href=`/src/pages/postDetail.html`">
+                    <p class="post-title" maxLength="26">제목</p>
+                    <div class="post-info-list">
+                        <div class="post-info">
+                            <p>좋아요 0</p>
+                            <p>댓글 0</p>
+                            <p>조회수 0</p>
+                        </div>
+                        <p class="post-write-date">2025-11-13 00:00:00</p>
+                    </div>
+                    <hr class="bar"/>
+                    <div class="author-info">
+                        <div class="author-profile-image"></div>
+                        <p class="author-nickname">더미 작성자 1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

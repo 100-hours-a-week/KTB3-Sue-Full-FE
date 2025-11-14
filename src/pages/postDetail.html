@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아무말 대잔치</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="../styles/postDetail.css">
+    <script type="module" src="/src/utils/backButton.js"></script>
+    <script type="module" src="/src/utils/modal.js"></script>
+</head>
+<body>
+    <div class="header">
+        <button class="backButton">&lt;</button>
+        <p class="title">아무 말 대잔치</p>
+    </div>
+    <div class="post-detail-container">
+        <div class="post-card">
+            <p class="post-title">제목 1</p>
+            <div class="post-write-info">
+                <div class="author-profile-image"></div>
+                <p class="author-nickname">더미 작성자 1</p>
+                <p class="post-write-date">2025-11-13 00:00:00</p>
+                <div class="post-update-button-container">
+                    <button>수정</button>
+                    <button id="post-delete-button">삭제</button>
+                </div>
+            </div>
+            <hr class="bar" />
+            <div class="post-image"></div>
+            <div class="post-content">이건 내용이다.</div>
+            <div class="post-info-container">
+                <div class="post-info-card">
+                    <p>123</p>
+                    <p>좋아요수</p>
+                </div>
+                <div class="post-info-card">
+                    <p>123</p>
+                    <p>조회수</p>
+                </div>
+                <div class="post-info-card">
+                    <p>123</p>
+                    <p>댓글</p>
+                </div>
+            </div>
+            <hr class="bar" />
+            <div class="comment-form-container">
+                <form class="comment-form">
+                    <textarea class="comment-form-input" name="comment" placeholder="댓글을 남겨주세요!"></textarea>
+                    <hr class="bar"/>
+                    <button class="comment-form-submit" type="submit">댓글 등록</button>
+                </form>
+            </div>
+        </div>
+        <div class="commnet-list-container">
+            <div class="comment-container">
+                <div class="comment-display-container">
+                    <div class="comment-info-container">
+                        <div class="comment-author-profile-image"></div>
+                        <p class="comment-author-nickname">더미 작성자 1</p>
+                        <p class="comment-write-date">2025-11-13 00:00:00</p>
+                    </div>
+                    <p class="comment-content">댓글 내용</p>
+                </div>
+                <div class="comment-edit-container">
+                    <button>수정</button>
+                    <button id="comment-delete-button">삭제</button>
+                </div>
+            </div>
+            <div class="comment-container">
+                <div class="comment-display-container">
+                    <div class="comment-info-container">
+                        <div class="comment-author-profile-image"></div>
+                        <p class="comment-author-nickname">더미 작성자 1</p>
+                        <p class="comment-write-date">2025-11-13 00:00:00</p>
+                    </div>
+                    <p class="comment-content">댓글 내용</p>
+                </div>
+            </div>
+            <div class="comment-container">
+                <div class="comment-display-container">
+                    <div class="comment-info-container">
+                        <div class="comment-author-profile-image"></div>
+                        <p class="comment-author-nickname">더미 작성자 1</p>
+                        <p class="comment-write-date">2025-11-13 00:00:00</p>
+                    </div>
+                    <p class="comment-content">댓글 내용</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-container hidden" id="post-delete-modal">
+        <div class="modal-window">
+            <p class="modal-content">게시글을 삭제하시겠습니까?</p>
+            <p class="modal-content-notice">삭제한 내용은 복구할 수 없습니다.</p>
+            <div class="modal-button-container">
+                <button class="modal-cancel-button" id="post-modal-close-button">취소</button>
+                <button class="modal-confirm-button">확인</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-container hidden" id="comment-delete-modal">
+        <div class="modal-window">
+            <p class="modal-content">댓글을 삭제하시겠습니까?</p>
+            <p class="modal-content-notice">삭제한 내용은 복구할 수 없습니다.</p>
+            <div class="modal-button-container">
+                <button class="modal-cancel-button" id="comment-modal-close-button">취소</button>
+                <button class="modal-confirm-button">확인</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
