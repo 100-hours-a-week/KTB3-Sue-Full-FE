@@ -6,29 +6,28 @@
     <title>아무말 대잔치</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="/src/styles/login.css">
-    <script type="module" src="/src/utils/formValidation.js"></script>
+    <script type="module" src="/src/utils/login.js"></script>
 </head>
 <body>
      <div class="header">
         <p class="title">아무 말 대잔치</p>
     </div>
-    <div class="login-form">
+    <div class="login-form-container">
             <h1 class="login-title">로그인</h1>
             <form id="login-form">
                 <div class="input-container">
                     <label class="login-label">
                         이메일
                     </label>
-                    <input class="login-input" name="email" type="email" placeholder="이메일을 입력하세요." required />
+                    <input class="login-input" id="email" type="text" placeholder="이메일을 입력하세요." />
                 </div>
                 <div class="input-container">
                     <label class="login-label">
                         비밀번호
                     </label>
-                    <input class="login-input" name="password" type="password" placeholder="비밀번호를 입력하세요." minLength="8" maxLength="20" required />
-                    <div class="input-validation-note">비밀번호를 입력해주세요</div>
+                    <input class="login-input" id="password" type="password" placeholder="비밀번호를 입력하세요." />
                 </div>
-                <button class="loginButton" type="submit" onclick="location.href=`/src/pages/posts.html`">로그인</button>
+                <button class="loginButton" type="button">로그인</button>
                 <a class="goToSignUp" href='/src/pages/signup.html'>회원가입</a>
             </form>
         </div>

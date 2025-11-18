@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.post-title {
+#post-write-title {
     font-size: 24px;
     font-weight: 700;
     margin-top: 24px;
@@ -17,8 +17,28 @@
 
 .post-write-input-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;;
     gap: 13px;
+}
+
+.post-write-file-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.post-write-file-button-container button {
+    background-color: #D9D9D9;
+    width: 66px;
+    height: 29px;
+    border-radius: 4px;
+    border-width: 1px;
+}
+
+.post-write-file-button-container span {
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .post-write-input-container label {
@@ -28,10 +48,14 @@
 }
 
 .post-write-input-container input {
-    width: 570;
+    width: 570px;
     height: 64px;
     border-radius: 8px 8px 4px 8px;
     border-width: 1px;
+}
+
+#post-write-image {
+    display: none;
 }
 
 .post-write-input-container input::placeholder {

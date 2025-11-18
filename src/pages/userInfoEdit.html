@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아무말 대잔치</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="../styles/userInfoEdit.css">
+    <script type="module" src="/src/utils/backButton.js"></script>
+    <script type="module" src="/src/utils/profileEditModal.js"></script>
+    <script type="module" src="/src/utils/userInfoEdit.js"></script>
+    <script type="module" src="/src/utils/userDeleteModal.js"></script>
+    <script type="module" src="/src/utils/loadProfile.js"></script>
+</head>
+<body>
+    <div class="header">
+        <button class="backButton">&lt;</button>
+        <p class="title">아무 말 대잔치</p>
+         <div class="user-profile-container">
+            <div class="user-profile-image-div">
+                <img class="user-profile-image" src="" alt="profile-image">
+            </div>
+            <div class="user-profile-edit-modal hidden">
+                <p class="user-profile-edit-menu" id="user-info-edit-menu">회원정보수정</p>
+                <p class="user-profile-edit-menu" id="user-password-edit-menu">비밀번호수정</p>
+                <p class="user-profile-edit-menu" id="logout-menu">로그아웃</p>
+            </div>
+        </div>
+    </div>
+    <div class="user-info-edit-container">
+        <p class="user-info-edit-title">회원정보 수정</p>
+        <form class="user-info-edit-form">
+            <div class="user-info-edit-profile-image-container">
+                <label class="user-info-edit-form-label">프로필 사진*</label>
+                <div class="user-info-profile-image-div">
+                    <img class="user-info-profile-image" src="" alt="pofile-image">
+                    <input type="file" id="user-info-profile-image-input" accept="image/*" onerror="this.style.display='none'">
+                    <button class="user-profile-image-edit-button">변경</button>
+                </div>
+            </div>
+            <div class="user-info-edit-form-input-container">
+                <label>이메일</label>
+                <p id="user-info-email"></p>
+            </div>
+            <div class="user-info-edit-form-input-container">
+                <label>닉네임</label>
+                <input id="user-info-nickname" type="text" placeholder="닉네임"/>
+            </div>
+            <button class="user-info-edit-submit-button" type="submit">수정하기</button>
+            <button class="user-delete-button" type="button">회원 탈퇴</button>
+        </form>
+    </div>
+    <div class="modal-container hidden" id="user-delete-modal">
+        <div class="modal-window">
+            <p class="modal-content">회원탈퇴 하시겠습니까?</p>
+            <p class="modal-content-notice">작성된 게시글과 댓글은 삭제됩니다.</p>
+            <div class="modal-button-container">
+                <button class="modal-cancel-button" id="user-modal-close-button">취소</button>
+                <button class="modal-confirm-button" id="user-delete-modal-confirm-button">확인</button>
+            </div>
+        </div>
+    </div>
+    <div class="toast-message-container hidden">
+        <p>수정 완료</p>
+    </div>
+</body>
+</html>

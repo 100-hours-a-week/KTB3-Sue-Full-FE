@@ -55,16 +55,6 @@
     justify-content: center;
 }
 
-.bar {
-    width: 592px;
-    height: 0;
-    border-width: 1px;
-    background-color: #000000;
-    opacity: 0.16;
-    padding: 0;
-    margin: 0;
-}
-
 .post-image {
     width: 544px;
     height: 306px;

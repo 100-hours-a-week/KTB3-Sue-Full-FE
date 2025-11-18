@@ -1,0 +1,64 @@
+.post-update-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-update-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.post-update-form {
+    gap: 27px;
+}
+
+.post-update-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.post-update-input-container label {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 27px;
+}
+
+.post-update-input-container input {
+    width: 570px;
+    height: 64px;
+    border-radius: 8px 8px 4px 8px;
+    border-width: 0;
+    background-color: #F4F5F7;
+}
+
+.post-update-input-container input::placeholder {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.post-update-input-container textarea {
+    width: 570px;
+    height: 299px;
+    border-radius: 8px 8px 4px 8px;
+    border-width: 1px;
+    background-color: #F4F5F7;
+    font-size: 15px;
+    font-weight: 400;
+    border-width: 0;
+}
+
+.submitButton {
+    width: 355px;
+    height: 33px;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: #7F6AEE;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 16px;
+}

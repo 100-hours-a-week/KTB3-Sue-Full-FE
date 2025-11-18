@@ -18,6 +18,7 @@ function hideCommentDeleteModal() {
     modal.classList.add('hidden')
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const deletePostButton = document.querySelector('#post-delete-button')
     deletePostButton.addEventListener('click', showPostDeleteModal )
