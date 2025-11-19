@@ -7,17 +7,17 @@
 #post-write-title {
     font-size: 24px;
     font-weight: 700;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin: 0;
+    margin-left: 24px;
 }
 
 .post-write-form {
-    gap: 27px;
+    gap: 27x;
 }
 
 .post-write-input-container {
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
     gap: 13px;
 }
 
@@ -25,7 +25,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: #F4F5F7;
     gap: 5px;
+    margin-left: 24px;
 }
 
 .post-write-file-button-container button {
@@ -45,13 +47,17 @@
     font-size: 16px;
     font-weight: 700;
     margin-top: 27px;
+    margin-left: 24px;
 }
 
 .post-write-input-container input {
     width: 570px;
     height: 64px;
     border-radius: 8px 8px 4px 8px;
-    border-width: 1px;
+    border-width: 0;
+    background-color: #F4F5F7;
+    margin-left: 24px;
+    padding: 0;
 }
 
 #post-write-image {
@@ -67,7 +73,9 @@
     width: 570px;
     height: 299px;
     border-radius: 8px 8px 4px 8px;
-    border-width: 1px;
+    border-width: 0;
+    margin-left: 24px;
+    background-color: #F4F5F7;
 }
 
 .post-write-input-container textarea::placeholder {
@@ -84,5 +92,5 @@
     color: #FFFFFF;
     font-size: 14px;
     font-weight: 700;
-    margin-top: 16px;
+    margin-top: 24px;
 }

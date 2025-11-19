@@ -9,6 +9,7 @@
     <script type="module" src="/src/utils/backButton.js"></script>
     <script type="module" src="/src/utils/profileEditModal.js"></script>
     <script type="module" src="/src/utils/loadProfile.js"></script>
+    <script type="module" src="/src/utils/postUpdate.js"></script>
 </head>
 <body>
     <div class="header">
@@ -31,21 +32,25 @@
             <div class="post-update-input-container">
                 <label>제목*</label>
                 <hr class="bar"/>
-                <input name="title" type="text" maxlength="26" placeholder="제목 1">
-                <hr class="bar"/>
+                <input id="post-update-title-input" name="title" type="text" maxlength="26" placeholder="제목">
             </div>
+            <hr class="bar"/>
             <div class="post-update-input-container">
                 <label>내용*</label>
                 <hr class="bar"/>
-                <textarea name="content" placeholder="내용 어쩌고 저쩌고"></textarea>
-                <hr class="bar"/>
+                <textarea  id="post-update-content-input" name="content" placeholder="content"></textarea>
             </div>
+            <hr class="bar"/>
             <div class="post-update-input-container">
                 <label>이미지</label>
-                <input type="file">
+                <div class="post-update-file-button-container">
+                    <button id="post-update-file-button" type="button">파일 선택</button>
+                    <span id="post-update-file-span"></span>
+                </div>
+                <input id="post-update-image" type="file" accept="image/*">
             </div>
         </form>
-        <button class="submitButton" type="submit" onclick="window.location='/src/pages/postDetail.html'">수정하기</button>
+        <button class="submitButton" type="button">수정하기</button>
     </div>
 </body>
 </html>

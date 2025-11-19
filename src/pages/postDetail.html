@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="../../index.css">
     <link rel="stylesheet" href="../styles/postDetail.css">
     <script type="module" src="/src/utils/backButton.js"></script>
-    <script type="module" src="/src/utils/modal.js"></script>
     <script type="module" src="/src/utils/profileEditModal.js"></script>
     <script type="module" src="/src/utils/loadProfile.js"></script>
+    <script type="module" src="/src/utils/postRead.js"></script>
+    <script type="module" src="/src/utils/likePost.js"></script>
+    <script type="module" src="/src/utils/commentWrite.js"></script>
 </head>
 <body>
     <div class="header">
@@ -27,42 +29,17 @@
         </div>
     </div>
     <div class="post-detail-container">
-        <div class="post-card">
-            <p class="post-title">제목 1</p>
-            <div class="post-write-info">
-                <div class="author-profile-image"></div>
-                <p class="author-nickname">더미 작성자 1</p>
-                <p class="post-write-date">2025-11-13 00:00:00</p>
-                <div class="post-update-button-container">
-                    <button id="post-update-button" onclick='window.location="/src/pages/postUpdate.html"'>수정</button>
-                    <button id="post-delete-button">삭제</button>
-                </div>
+        <div class="post-card-container">
+            <div class="post-card">
             </div>
-            <hr class="bar" />
-            <div class="post-image"></div>
-            <div class="post-content">이건 내용이다.</div>
-            <div class="post-info-container">
-                <div class="post-info-card">
-                    <p>123</p>
-                    <p>좋아요수</p>
-                </div>
-                <div class="post-info-card">
-                    <p>123</p>
-                    <p>조회수</p>
-                </div>
-                <div class="post-info-card">
-                    <p>123</p>
-                    <p>댓글</p>
-                </div>
-            </div>
-            <hr class="bar" />
-            <div class="comment-form-container">
-                <form class="comment-form">
-                    <textarea class="comment-form-input" name="comment" placeholder="댓글을 남겨주세요!"></textarea>
-                    <hr class="bar"/>
-                    <button class="comment-form-submit" type="submit">댓글 등록</button>
-                </form>
-            </div>
+        </div>
+        <hr class="bar" />
+        <div class="comment-form-container">
+            <form class="comment-form">
+                <textarea id="comment-write-content"class="comment-form-input" name="comment" placeholder="댓글을 남겨주세요!"></textarea>
+                <hr class="bar"/>
+                <button class="comment-form-submit" type="button">댓글 등록</button>
+            </form>
         </div>
         <div class="commnet-list-container">
             <div class="comment-container">
@@ -107,7 +84,7 @@
             <p class="modal-content-notice">삭제한 내용은 복구할 수 없습니다.</p>
             <div class="modal-button-container">
                 <button class="modal-cancel-button" id="post-modal-close-button">취소</button>
-                <button class="modal-confirm-button">확인</button>
+                <button class="modal-confirm-button" id="post-delete-confirm-button">확인</button>
             </div>
         </div>
     </div>

@@ -18,17 +18,23 @@ function hideCommentDeleteModal() {
     modal.classList.add('hidden')
 }
 
-
-document.addEventListener('DOMContentLoaded', () => {
+export function initPostModalEvents(){
     const deletePostButton = document.querySelector('#post-delete-button')
-    deletePostButton.addEventListener('click', showPostDeleteModal )
+    if(deletePostButton)
+        deletePostButton.addEventListener('click', showPostDeleteModal )
 
     const closePostModalButton = document.querySelector('#post-modal-close-button')
-    closePostModalButton.addEventListener('click', hidePostDeleteModal )
+    if(closePostModalButton)
+        closePostModalButton.addEventListener('click', hidePostDeleteModal )
 
+}
+
+export function initCommentModalEvents(){
     const deleteCommentButton = document.querySelector('#comment-delete-button')
-    deleteCommentButton.addEventListener('click', showCommentDeleteModal)
+    if(deleteCommentButton)
+        deleteCommentButton.addEventListener('click', showCommentDeleteModal)
 
     const closeCommentModalButton = document.querySelector('#comment-modal-close-button')
-    closeCommentModalButton.addEventListener('click', hideCommentDeleteModal)
-})
+    if(closeCommentModalButton)
+        closeCommentModalButton.addEventListener('click', hideCommentDeleteModal)
+}

@@ -14,7 +14,7 @@ postTitleInput.addEventListener('focusout', (e) => {
 
 const postContentInput = document.querySelector('#post-write-content')
 postContentInput.addEventListener('focusout', (e) => {
-    if(postContentInput.value !== ""){
+    if(postContentInput.value.trim() !== ""){
         fillPostContent = true
         changeButtonColor()
     } else {
