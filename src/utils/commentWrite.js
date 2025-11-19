@@ -17,12 +17,14 @@ function changeButtonColor(){
         commentSubmitButton.style.backgroundColor = "#ACA0EB"
     }
 }
-commentSubmitButton.addEventListener('click', () => {
+commentSubmitButton.addEventListener('click', async(e) => {
+    e.preventDefault()
     if(!fillCommentContent){
         return
     }
 
-    write()
+    await write()
+    location.reload()
 })
 
 
@@ -55,7 +57,6 @@ async function write(){
         const comment = commentData.commentData
         console.log(comment)
 
-    
         // 댓글 리스트 재로딩
     } catch(error){
         console.log(`commet write error ${error}`)

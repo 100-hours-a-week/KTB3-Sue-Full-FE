@@ -8,12 +8,12 @@ function hidePostDeleteModal(){
     modal.classList.add('hidden')
 }
 
-function showCommentDeleteModal(){
+export function showCommentDeleteModal(){
     const modal = document.querySelector("#comment-delete-modal")
     modal.classList.remove('hidden')
 }
 
-function hideCommentDeleteModal() {
+export function hideCommentDeleteModal() {
     const modal = document.querySelector("#comment-delete-modal")
     modal.classList.add('hidden')
 }
@@ -27,14 +27,4 @@ export function initPostModalEvents(){
     if(closePostModalButton)
         closePostModalButton.addEventListener('click', hidePostDeleteModal )
 
-}
-
-export function initCommentModalEvents(){
-    const deleteCommentButton = document.querySelector('#comment-delete-button')
-    if(deleteCommentButton)
-        deleteCommentButton.addEventListener('click', showCommentDeleteModal)
-
-    const closeCommentModalButton = document.querySelector('#comment-modal-close-button')
-    if(closeCommentModalButton)
-        closeCommentModalButton.addEventListener('click', hideCommentDeleteModal)
 }

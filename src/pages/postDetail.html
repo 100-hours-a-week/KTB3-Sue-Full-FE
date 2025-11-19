@@ -10,6 +10,7 @@
     <script type="module" src="/src/utils/profileEditModal.js"></script>
     <script type="module" src="/src/utils/loadProfile.js"></script>
     <script type="module" src="/src/utils/postRead.js"></script>
+    <script type="module" src="/src/utils/loadComments.js"></script>
     <script type="module" src="/src/utils/likePost.js"></script>
     <script type="module" src="/src/utils/commentWrite.js"></script>
 </head>
@@ -38,44 +39,11 @@
             <form class="comment-form">
                 <textarea id="comment-write-content"class="comment-form-input" name="comment" placeholder="댓글을 남겨주세요!"></textarea>
                 <hr class="bar"/>
-                <button class="comment-form-submit" type="button">댓글 등록</button>
+                <button id="comment-write-confirm-button" class="comment-form-submit" type="button">댓글 등록</button>
+                <button id="comment-update-confirm-button" class="comment-form-submit hidden" type="button">댓글 수정</button>
             </form>
         </div>
-        <div class="commnet-list-container">
-            <div class="comment-container">
-                <div class="comment-display-container">
-                    <div class="comment-info-container">
-                        <div class="comment-author-profile-image"></div>
-                        <p class="comment-author-nickname">더미 작성자 1</p>
-                        <p class="comment-write-date">2025-11-13 00:00:00</p>
-                    </div>
-                    <p class="comment-content">댓글 내용</p>
-                </div>
-                <div class="comment-edit-container">
-                    <button id="comment-update-button">수정</button>
-                    <button id="comment-delete-button">삭제</button>
-                </div>
-            </div>
-            <div class="comment-container">
-                <div class="comment-display-container">
-                    <div class="comment-info-container">
-                        <div class="comment-author-profile-image"></div>
-                        <p class="comment-author-nickname">더미 작성자 1</p>
-                        <p class="comment-write-date">2025-11-13 00:00:00</p>
-                    </div>
-                    <p class="comment-content">댓글 내용</p>
-                </div>
-            </div>
-            <div class="comment-container">
-                <div class="comment-display-container">
-                    <div class="comment-info-container">
-                        <div class="comment-author-profile-image"></div>
-                        <p class="comment-author-nickname">더미 작성자 1</p>
-                        <p class="comment-write-date">2025-11-13 00:00:00</p>
-                    </div>
-                    <p class="comment-content">댓글 내용</p>
-                </div>
-            </div>
+        <div class="comment-list-container">
         </div>
     </div>
     <div class="modal-container hidden" id="post-delete-modal">
@@ -94,7 +62,7 @@
             <p class="modal-content-notice">삭제한 내용은 복구할 수 없습니다.</p>
             <div class="modal-button-container">
                 <button class="modal-cancel-button" id="comment-modal-close-button">취소</button>
-                <button class="modal-confirm-button">확인</button>
+                <button class="modal-confirm-button" id="comment-modal-confirm-button">확인</button>
             </div>
         </div>
     </div>

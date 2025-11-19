@@ -125,7 +125,7 @@
     border-width: 0;
     background-color: #FFFFFF;
     margin-top: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 35px;
 }
 
 .comment-form {
@@ -173,17 +173,21 @@
     width: 544px;
     height: 65px;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .comment-display-container {
     display: flex;
     flex-direction: column;
+    margin: 0;
+    margin-bottom: 16px;
+    padding: 0;
 }
 
 .comment-info-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     width: 282px;
 }
 
@@ -193,24 +197,32 @@
     height: 36px;
     border-radius: 50%;
     background-color: #d9d9d9;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 .comment-author-nickname {
     font-size: 15px;
     font-weight: 700;
     margin-left: 10px;
+    margin-bottom: 0;
+    margin-top: 0px;
 }
 
 .comment-write-date {
+    font-size: 15px;
     margin-left: auto;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .comment-content {
-    margin-top: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
     margin-left: 46px;
-    width: 100%;
+    max-width: 380px;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 400
 }
 
 .comment-edit-container {
@@ -251,6 +263,7 @@
     border-radius: 12px;
     justify-items: center;
     align-content: center;
+    overflow: hidden;
 }
 
 .modal-content {

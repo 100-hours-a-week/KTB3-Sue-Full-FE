@@ -27,6 +27,7 @@ export async function like(post_id, user_id){
         const likeCount = document.querySelector("#likeCount")
 
         checkLike(post_id, user_id)
+        location.reload()
     } catch(error){
         console.log(`like error ${error}`)
     }
@@ -58,6 +59,8 @@ export async function unlike(post_id, user_id){
         likeButton.style.backgroundColor = "#D9D9D9"
 
         checkLike(post_id, user_id)
+
+        location.reload()
 
     } catch (error){
         console.log(`unlike error ${error}`)

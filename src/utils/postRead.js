@@ -110,11 +110,6 @@ function renderPost(post, isWritten){
             <img src="http://localhost:8080/upload/postImage/${post.images[0].image_url}" class="post-image-img" alt="error">
         `  
     }  
-    // } else {
-    //     postImageHtml = `
-    //         <div class="post-image-placeholder"></div>
-    //         `
-    // }
 
     let createdDate = ``
     let createdTime = ``
