@@ -1,35 +1,4 @@
-const commentInput = document.querySelector('#comment-write-content')
-let fillCommentContent = false
-
-
-commentInput.addEventListener('focusout', (e) => {
-    if(commentInput.value.trim() !== ""){
-        fillCommentContent = true
-        changeButtonColor()
-    }
-})
-
-const commentSubmitButton = document.querySelector('.comment-form-submit')
-function changeButtonColor(){
-    if(fillCommentContent){
-        commentSubmitButton.style.backgroundColor = "#7F6AEE"
-    } else {
-        commentSubmitButton.style.backgroundColor = "#ACA0EB"
-    }
-}
-commentSubmitButton.addEventListener('click', async(e) => {
-    e.preventDefault()
-    if(!fillCommentContent){
-        return
-    }
-
-    await write()
-    location.reload()
-})
-
-
-
-async function write(){
+export async function write(content){
     const urlParams = new URLSearchParams(window.location.search)
     const post_id = urlParams.get('post_id')
 
@@ -37,8 +6,7 @@ async function write(){
     const userInfo = JSON.parse(stored)
     const user_id = userInfo.id
 
-    const content = commentInput.value.trim()
-
+    console.log(user_id)
     try {
         const response = await fetch(`http://localhost:8080/posts/${post_id}/comments`, {
             method: "POST",
@@ -54,12 +22,70 @@ async function write(){
         }
 
         const commentData = await response.json()
-        const comment = commentData.commentData
-        console.log(comment)
+        const commentResponse = commentData.data
 
-        // 댓글 리스트 재로딩
+        console.log(commentResponse)
+        writeCommentRender(commentResponse)
+        increaseCommentCount()
     } catch(error){
         console.log(`commet write error ${error}`)
     }
 
+}
+
+function writeCommentRender(comment){
+    const container = document.querySelector('.comment-list-container')
+
+    const div = document.createElement('div')
+    div.className = 'comment-container'
+    div.dataset.id = comment.id
+
+    let profileImageHtml = ''
+
+    if(comment.user_profileImage){
+        profileImageHtml = `
+         <img src="http://localhost:8080/upload/profileImage/${comment.user_profileImage}" class="comment-author-profile-image">
+        `
+    } else {
+        profileImageHtml = `
+            <div clss="comment-author-profile-image"></div>
+        `
+    }
+
+    let createdDate = ``
+    let createdTime = ``
+        
+    if(comment.createdAt){
+        const [createdDateData, createdTimeData] = comment.createdAt.split('T')
+
+        createdDate = createdDateData
+        createdTime = createdTimeData.split('.')[0]
+    }
+
+    const myCommentEditButton = `
+             <div class="comment-edit-container">
+                <button class="comment-update-button">수정</button>
+                <button class="comment-delete-button">삭제</button>
+            </div>
+        `
+
+    div.innerHTML = `
+        <div class="comment-display-container">
+            <div class="comment-info-container">
+                ${profileImageHtml}
+                 <p class="comment-author-nickname" id="${comment.user_id}">${comment.user_nickname}</p>
+                 <p class="comment-write-date">${createdDate} ${createdTime}</p>
+            </div>
+            <p class="comment-content">${comment.content}</p>
+        </div> 
+        ${myCommentEditButton}  
+        `
+
+    container.prepend(div)
+}
+
+function increaseCommentCount(){
+    const commentCount = document.querySelector('#post-comment-count')
+    const currentCount = Number(commentCount.textContent)
+    commentCount.textContent = (currentCount + 1).toString()
 }

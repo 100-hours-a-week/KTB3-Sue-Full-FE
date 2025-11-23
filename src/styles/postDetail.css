@@ -118,6 +118,14 @@
     margin: 0;
 }
 
+#likePostButton[data-mode="like"]{
+    background-color: #D9D9D9;
+}
+
+#likePostButton[data-mode="unlike"]{
+    background-color: #ACA0EB;
+}
+
 .comment-form-container {
     width: 592px;
     height: 169px;
@@ -165,6 +173,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    overflow: visible;
 }
 
 .comment-container {

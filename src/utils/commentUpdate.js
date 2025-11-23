@@ -1,48 +1,28 @@
-const commentInput = document.querySelector('#comment-write-content')
-let fillCommentContent = false
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('comment-update-button')) {
+        const wrapper = e.target.closest('.comment-container') 
+        const comment_id = wrapper.dataset.id
 
+        const comment_content = wrapper.querySelector('.comment-content').textContent
 
-commentInput.addEventListener('focusout', (e) => {
-    if(commentInput.value.trim() !== ""){
-        fillCommentContent = true
-        changeButtonColor()
+        initCommentWriteInput(comment_content)
+
+        changeUpdateMode(comment_id)
     }
 })
 
-const commentUpdateButton = document.querySelector('#comment-update-confirm-button')
-
-commentUpdateButton.addEventListener('click', () => {
-    const comment_id = commentUpdateButton.dataset.id
-    const comment_content = document.querySelector('#comment-write-content').value.trim()
-
-    updateComment(comment_id, comment_content)
-})
-
-function changeButtonColor(){
-    if(fillCommentContent){
-        commentUpdateButton.style.backgroundColor = "#7F6AEE"
-    } else {
-        commentUpdateButton.style.backgroundColor = "#ACA0EB"
-    }
+function changeWriteMode(){
+    const commentSubmitButton = document.querySelector('#comment-submit-button')
+    commentSubmitButton.dataset.action = 'write'
+    commentSubmitButton.textContent = '댓글 작성'
+    commentSubmitButton.dataset.id = null
 }
 
-
-export function changeWriteButton(comment_id){
-    const commentWriteButton = document.querySelector('#comment-write-confirm-button')
-    commentWriteButton.classList.add('hidden')  
-
-    const commentUpdateButton = document.querySelector('#comment-update-confirm-button')
-    commentUpdateButton.classList.remove('hidden')
-    commentUpdateButton.dataset.id = comment_id
-
-}
-
-function changeUpdateButton(){
-    const commentUpdateButton = document.querySelector('#comment-update-confirm-button')
-    commentUpdateButton.classList.add('hidden')
-
-    const commentWriteButton = document.querySelector('#comment-write-confirm-button')
-    commentWriteButton.classList.remove('hidden')
+function changeUpdateMode(comment_id){
+    const commentSubmitButton = document.querySelector('#comment-submit-button')
+    commentSubmitButton.dataset.action = 'update'
+    commentSubmitButton.textContent = '댓글 수정'
+    commentSubmitButton.dataset.id = comment_id
 }
 
 
@@ -51,7 +31,7 @@ export function initCommentWriteInput(content){
     commentWriteForm.value = content
 }
 
-async function updateComment(comment_id, content){
+export async function update(comment_id, content){
     const urlParams = new URLSearchParams(window.location.search)
     const post_id = urlParams.get('post_id')
     
@@ -78,9 +58,8 @@ async function updateComment(comment_id, content){
 
         console.log(commentUpdate)
 
-        changeUpdateButton()
+        changeWriteMode()
         initCommentWriteInput("")
-        location.reload()
     } catch(error){
         console.log(`comment update error ${error}`)
     }

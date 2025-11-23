@@ -22,12 +22,12 @@ export async function like(post_id, user_id){
         console.log(`likeData: ${likeData}`)
 
         // 좋아요 수 조회해서 렌더링하기? or 자동 리렌더링?
-        likeButton.style.backgroundColor = "#ACA0EB"
 
-        const likeCount = document.querySelector("#likeCount")
+        likeButton.style.backgroundColor = "#ACA0EB";
 
         checkLike(post_id, user_id)
-        location.reload()
+        increaseLikeCount()
+        likeButton.dataset.mode = 'unlike'
     } catch(error){
         console.log(`like error ${error}`)
     }
@@ -60,8 +60,8 @@ export async function unlike(post_id, user_id){
 
         checkLike(post_id, user_id)
 
-        location.reload()
-
+        decreaseLikeCount()
+        likeButton.dataset.mode = 'like'
     } catch (error){
         console.log(`unlike error ${error}`)
     }
@@ -91,8 +91,8 @@ export async function getLikeCount(post_id){
 }
 
 export async function checkLike(post_id, user_id){
-    const likeButton = document.querySelector('#likePostButton')
-
+    console.log(post_id)
+    console.log(user_id)
     try {
         const response = await fetch(`http://localhost:8080/posts/${post_id}/likes/check?user_id=${user_id}`, {
             method: 'GET',
@@ -107,17 +107,25 @@ export async function checkLike(post_id, user_id){
         }
 
         const likeCheckData = await response.json()
-        console.log(likeCheckData)
+
         const isLiked = likeCheckData.data
 
-        if(isLiked){
-            likeButton.style.backgroundColor = "#ACA0EB"
-        } else {
-            likeButton.style.backgroundColor = "#D9D9D9"
-        }
-
+        console.log(isLiked)
         return isLiked
+
     } catch (error){
         console.log(`like check error ${error}`)
     }
+}
+
+function increaseLikeCount(){
+    const likeCount = document.querySelector('#post-like-count')
+    const currentCount = Number(likeCount.textContent)
+    likeCount.textContent = (currentCount + 1).toString()
+}
+
+function decreaseLikeCount(){
+    const likeCount = document.querySelector('#post-like-count')
+    const currentCount = Number(likeCount.textContent)
+    likeCount.textContent = (currentCount - 1).toString()
 }

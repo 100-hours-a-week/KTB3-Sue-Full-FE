@@ -1,6 +1,8 @@
-import { initCommentDeleteConfirmButton } from "./commentDelete.js"
-import { changeWriteButton, initCommentWriteInput } from "./commentUpdate.js"
-import { showCommentDeleteModal, hideCommentDeleteModal } from "./modal.js"
+import { hideCommentDeleteModal } from "./modal.js"
+import { write } from "./commentWrite.js"
+import { update } from "./commentUpdate.js"
+
+let fillCommentContent = false
 
 document.addEventListener('DOMContentLoaded', () => {
     loadComments()
@@ -8,33 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeCommentModalButton = document.querySelector('#comment-modal-close-button')
     if(closeCommentModalButton)
         closeCommentModalButton.addEventListener('click', hideCommentDeleteModal)
-})
-
-
-document.addEventListener('click', (e) => {
-
-    if (e.target.classList.contains('comment-update-button')) {
-        const wrapper = e.target.closest('.comment-container') 
-        const comment_id = wrapper.dataset.id
-
-        const comment_content = wrapper.querySelector('.comment-content').textContent
-
-        initCommentWriteInput(comment_content)
-
-        changeWriteButton(comment_id, comment_content)
-    }
-
-    if (e.target.classList.contains('comment-delete-button')) {
-        const wrapper = e.target.closest('.comment-container') 
-        const comment_id = wrapper.dataset.id
-
-        console.log(comment_id)
-
-        initCommentDeleteConfirmButton(comment_id)
-
-        showCommentDeleteModal()
-    }
-
 })
 
 async function loadComments() {
@@ -130,3 +105,33 @@ function renderCommentList(commentList, user_id){
     })
 }
 
+
+const commentButton = document.querySelector('#comment-submit-button')
+const commentInput = document.querySelector('#comment-write-content')
+commentButton.addEventListener('click', (e) => {
+    const comment_content = commentInput.value.trim()
+
+    console.log(e.target.dataset.action)
+    if(e.target.dataset.action === 'write'){
+        write(comment_content)
+        commentInput.value = ""
+    } else {
+        const comment_id = e.target.dataset.id
+        update(comment_id, comment_content)
+    }
+})
+
+commentInput.addEventListener('focusout', (e) => {
+    if(commentInput.value.trim() !== ""){
+        fillCommentContent = true
+        changeButtonColor()
+    }
+})
+
+function changeButtonColor(){
+    if(fillCommentContent){
+        commentButton.style.backgroundColor = "#7F6AEE"
+    } else {
+        commentButton.style.backgroundColor = "#ACA0EB"
+    }
+}

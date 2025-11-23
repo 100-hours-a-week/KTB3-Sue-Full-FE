@@ -1,11 +1,32 @@
 import { initPostModalEvents } from "./modal.js";
 import { checkLike, like, unlike } from "./likePost.js";
 import { deletePost } from "./postDelete.js";
+  // 좋아요 여부 저장
 
-let currentLikeState = false;  // 좋아요 여부 저장
+const urlParams = new URLSearchParams(window.location.search)
+const post_id = urlParams.get('post_id')
+
+const stored = localStorage.getItem('user')
+const userInfo = JSON.parse(stored)
+const user_id = userInfo.id
 
 document.addEventListener('DOMContentLoaded', () => {
     loadPost()
+})
+
+document.addEventListener('click', (e) => {
+    if(e.target.id === "post-update-button"){
+        window.location.href = `/src/pages/postUpdate.html?post_id=${post_id}`
+    }
+
+    if(e.target.id === "likePostButton"){
+        console.log(e.target.dataset.mode)
+        if(e.target.dataset.mode === 'like'){
+            like(post_id, user_id)
+        } else {
+            unlike(post_id, user_id)
+        }
+    }
 })
 
 const deletePostConfirmButton = document.querySelector('#post-delete-confirm-button')
@@ -64,16 +85,17 @@ async function loadPost(){
 
         const isWritten = await checkPostingByUser(post_id, user_id)
 
-        console.log(isWritten)
-
-
         renderPost(post, isWritten)
     } catch(error){
         console.log(`load post error ${error}`)
     }
 }
 
-function renderPost(post, isWritten){
+async function renderPost(post, isWritten){
+    const stored = localStorage.getItem('user')
+    const userInfo = JSON.parse(stored)
+    const user_id = userInfo.id
+
     const container = document.querySelector('.post-card-container')
 
     const div = document.createElement('div')
@@ -93,9 +115,10 @@ function renderPost(post, isWritten){
 
     let myPostButton = ''
     if(isWritten){
+        // onclick 부분
         myPostButton = `
             <div class="post-update-button-container">
-                <button id="post-update-button" onclick='window.location="/src/pages/postUpdate.html?post_id=${post.post_id}"'>수정</button>
+                <button id="post-update-button">수정</button>
                 <button id="post-delete-button">삭제</button>
             </div>
         `
@@ -123,6 +146,29 @@ function renderPost(post, isWritten){
         const [year, month, day] = createdDateSplit
     }
 
+    let currentLikeState = await checkLike(post.post_id, user_id)
+    
+
+    let likeCountDiv = ``
+    
+    console.log(`currentLikeState: ${currentLikeState}`)
+
+    if(currentLikeState){
+        likeCountDiv = `
+        <div class="post-info-card" id="likePostButton" data-mode="unlike">
+            <p id="post-like-count">${post.likeCount}</p>
+            <p>좋아요수</p>
+        </div>
+        `
+    } else {
+        likeCountDiv = `
+        <div class="post-info-card" id="likePostButton" data-mode="like">
+            <p id="post-like-count">${post.likeCount}</p>
+            <p>좋아요수</p>
+        </div>
+        `
+    }
+
     div.innerHTML = `
         <p class="post-title">${post.title}</p>
         <div class="post-write-info">
@@ -135,45 +181,19 @@ function renderPost(post, isWritten){
         ${postImageHtml}
         <div class="post-content">${post.content}</div>
         <div class="post-info-container">
-            <div class="post-info-card" id="likePostButton">
-                <p id="likeCount">${post.likeCount}</p>
-                <p>좋아요수</p>
-            </div>
+            ${likeCountDiv}
             <div class="post-info-card">
                 <p>${post.watch}</p>
                 <p>조회수</p>
             </div>
             <div class="post-info-card">
-                <p>${post.commentCount}</p>
+                <p id="post-comment-count">${post.commentCount}</p>
                 <p>댓글</p>
             </div>
         </div>
     `
 
     container.appendChild(div)
-
-    const likeButton = document.querySelector('#likePostButton')
-    console.log(likeButton)
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const post_id = urlParams.get('post_id');
-
-    const stored = localStorage.getItem('user')
-    const userInfo = JSON.parse(stored)
-    const user_id = userInfo.id
-
-    checkLike(post_id, user_id).then(data => {
-        currentLikeState = data
-    })
-    console.log(currentLikeState)
- 
-    likeButton.addEventListener('click', () => {
-        if(currentLikeState){
-            unlike(post_id, user_id)
-        } else {
-            like(post_id, user_id)
-        }
-    }) 
 
     initPostModalEvents()
 }

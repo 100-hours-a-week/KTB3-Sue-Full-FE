@@ -1,11 +1,24 @@
-import { hideCommentDeleteModal } from "./modal.js"
+import { showCommentDeleteModal, hideCommentDeleteModal } from "./modal.js"
 
-export function initCommentDeleteConfirmButton(comment_id){
-    const deleteConfirmButton = document.querySelector(`#comment-modal-confirm-button`)
-    deleteConfirmButton.addEventListener('click', () => {
-        deleteComment(comment_id)
-    })
-}
+let currentDeleteCommentId = null
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('comment-delete-button')) {
+        const wrapper = e.target.closest('.comment-container') 
+        const comment_id = wrapper.dataset.id
+
+        currentDeleteCommentId = comment_id
+        console.log(currentDeleteCommentId)
+
+        showCommentDeleteModal()
+    }
+})
+
+document.querySelector(`#comment-modal-confirm-button`)
+    .addEventListener('click', () => {
+    if(!currentDeleteCommentId) return
+    deleteComment(currentDeleteCommentId)
+})
 
 async function deleteComment(comment_id){
     const urlParams = new URLSearchParams(window.location.search)
@@ -16,7 +29,7 @@ async function deleteComment(comment_id){
     const user_id = userInfo.id
 
     try{
-        const response = await fetch(`http://localhost:8080/posts/${post_id}/comments/${comment_id}`, {
+        const response = await fetch(`http://localhost:8080/posts/${post_id}/comments/${currentDeleteCommentId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,14 +42,22 @@ async function deleteComment(comment_id){
             return
         }
 
-        const deleteData = await response.json()
-        const deleteComment = deleteData.data
-        console.log(deleteData)
-        console.log(deleteComment)
-
         hideCommentDeleteModal()
-        location.reload()
+        const deleteData = await response.json()
+
+        console.log(deleteData.data)
+
+        const deleteComment = document.querySelector(`.comment-container[data-id="${comment_id}"]`)
+        deleteComment.remove()
+
+        decreaseCommentCount()
     } catch(error){
         console.log(`comment delete error ${error}`)
     }
+}
+
+function decreaseCommentCount(){
+    const commentCount = document.querySelector('#post-comment-count')
+    const currentCount = Number(commentCount.textContent)
+    commentCount.textContent = (currentCount - 1).toString()
 }

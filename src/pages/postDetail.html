@@ -13,6 +13,8 @@
     <script type="module" src="/src/utils/loadComments.js"></script>
     <script type="module" src="/src/utils/likePost.js"></script>
     <script type="module" src="/src/utils/commentWrite.js"></script>
+    <script type="module" src="/src/utils/commentUpdate.js"></script>
+    <script type="module" src="/src/utils/commentDelete.js"></script>
 </head>
 <body>
     <div class="header">
@@ -39,8 +41,7 @@
             <form class="comment-form">
                 <textarea id="comment-write-content"class="comment-form-input" name="comment" placeholder="댓글을 남겨주세요!"></textarea>
                 <hr class="bar"/>
-                <button id="comment-write-confirm-button" class="comment-form-submit" type="button">댓글 등록</button>
-                <button id="comment-update-confirm-button" class="comment-form-submit hidden" type="button">댓글 수정</button>
+                <button id="comment-submit-button" class="comment-form-submit" type="button" data-action="write">댓글 등록</button>
             </form>
         </div>
         <div class="comment-list-container">
