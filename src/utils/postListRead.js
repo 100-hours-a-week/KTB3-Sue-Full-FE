@@ -33,15 +33,17 @@ async function loadPosts(){
 function renderPosts(posts){
     const container = document.querySelector('#post-list-container')
     
+    const fragment = new DocumentFragment()
 
     posts.forEach(post => {
         console.log(post)
         const div = document.createElement('div')
         div.className = 'post'
-        div.onclick = () => {
+
+        div.addEventListener('click', () => {
             localStorage.setItem("postId", post.post_id)
             window.location.href = `/src/pages/postDetail.html?post_id=${post.post_id}`
-        }
+        })
 
         let profileImageHtml = ''
 
@@ -85,7 +87,8 @@ function renderPosts(posts){
             </div>
         `
 
-        container.appendChild(div)
+        fragment.appendChild(div)
     })
 
+    container.appendChild(fragment)
 }

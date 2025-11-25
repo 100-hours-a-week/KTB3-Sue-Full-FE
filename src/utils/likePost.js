@@ -21,12 +21,10 @@ export async function like(post_id, user_id){
 
         console.log(`likeData: ${likeData}`)
 
-        // 좋아요 수 조회해서 렌더링하기? or 자동 리렌더링?
-
         likeButton.style.backgroundColor = "#ACA0EB";
 
-        checkLike(post_id, user_id)
         increaseLikeCount()
+        
         likeButton.dataset.mode = 'unlike'
     } catch(error){
         console.log(`like error ${error}`)
@@ -58,9 +56,8 @@ export async function unlike(post_id, user_id){
 
         likeButton.style.backgroundColor = "#D9D9D9"
 
-        checkLike(post_id, user_id)
-
         decreaseLikeCount()
+
         likeButton.dataset.mode = 'like'
     } catch (error){
         console.log(`unlike error ${error}`)
@@ -84,7 +81,6 @@ export async function getLikeCount(post_id){
 
         const likeCountRespoonse = await response.json()
 
-        // const likeCount = 
     } catch(error){
         console.log(`get like count error ${error}`)
     }

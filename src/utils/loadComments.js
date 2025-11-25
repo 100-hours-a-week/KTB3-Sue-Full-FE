@@ -47,6 +47,8 @@ async function loadComments() {
 function renderCommentList(commentList, user_id){
     const container = document.querySelector('.comment-list-container')
 
+    const fragment = new DocumentFragment()
+
     commentList.forEach(comment => {
         const div = document.createElement('div')
         div.className = 'comment-container'
@@ -100,9 +102,11 @@ function renderCommentList(commentList, user_id){
                 ${myCommentEditButton}  
         `
 
-        container.appendChild(div)
+        fragment.appendChild(div)
 
     })
+
+    container.appendChild(fragment)
 }
 
 
