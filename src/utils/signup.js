@@ -1,8 +1,12 @@
 import { noticeHelperMessage, checkEmail, checkPassword, checkPasswordConfirm, checkNickname } from "./formValidation.js"
+import { removeTempProfileImage, uploadProfileImage } from "./profileImageProcess.js"
+import { supabase } from "./storage/supabase.js"
+
 const form = document.querySelector('.signup-form')
 
 const profileImageInputDiv = document.querySelector('.signup-profile-image-div')
 const profileImageInput = document.querySelector('#signup-profile-image-input')
+let profileImageFilePath
 
 const emailInput = document.querySelector('#email-input')
 const passwordInput = document.querySelector('#password-input')
@@ -30,13 +34,15 @@ profileImageInputDiv.addEventListener('click', (e) => {
     profileImageInput.click()
 })
 
-profileImageInput.addEventListener('input', (e) => {
+profileImageInput.addEventListener('input', async (e) => {
     e.preventDefault()
 
     const profileImagePreview = document.querySelector('.signup-profile-image')
     const plusText = document.querySelector('.signup-profile-image-div p')
 
     const selectedFile = e.target.files[0]
+
+    // storage temp에 저장
     
     if(!selectedFile){
         profileImagePreview.src = ''
@@ -47,7 +53,10 @@ profileImageInput.addEventListener('input', (e) => {
         return 
     }
 
-    const imageUrl = URL.createObjectURL(selectedFile)
+    const {imageUrl, filePath} = await uploadProfileImage(selectedFile)
+
+    profileImageFilePath = filePath
+
     profileImagePreview.src = imageUrl
     profileImagePreview.style.display = 'block'
     plusText.style.display = 'none'
@@ -56,7 +65,6 @@ profileImageInput.addEventListener('input', (e) => {
 
     passProfileImageForm = true
     changeButtonColor()
-
 })
 
 emailInput.addEventListener('focusout', (e) => {
@@ -118,21 +126,13 @@ async function signup(){
     console.log(passwordConfirm)
     console.log(nickname)
 
-    const formData = new FormData()
-    formData.append("email", email)
-    formData.append("password", password)
-    formData.append("passwordConfirm", passwordConfirm)
-    formData.append("nickname", nickname)
-    formData.append("profileImage", profileImageInput.files[0])
-
-
-    console.log(formData)
-
-
     try {
         const response = await fetch('http://localhost:8080/accounts/user', {
             method: "POST",
-            body: formData
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password, passwordConfirm, nickname, profileImageFilePath})
         })
 
         if(!response.ok){
@@ -140,13 +140,27 @@ async function signup(){
             return
         }
 
-        const data = await response.json()
+        const signupData = await response.json()
 
+        console.log(signupData)
+
+        const { data, error } = await supabase.storage.from(`profile-image`).move(`temp/${profileImageFilePath}`,`${signupData.data.user_id}/${profileImageFilePath}` )
         console.log(data)
+        
+        if(error){
+            console.error(error)
+            console.log('fail to move image to feed_id from temp')
+            removeTempProfileImage(profileImageFilePath)
+        }
+        
+         console.log('feed image move to feed from temp')
 
         window.location.href = 'http://localhost:5501/index.html'
 
     } catch(error){
         console.error(error)
+        removeTempProfileImage(profileImageFilePath)
     }
+
+    profileImageFilePath = null
 }
