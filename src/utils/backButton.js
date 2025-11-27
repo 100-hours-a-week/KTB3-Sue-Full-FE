@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const back = document.querySelector('.backButton')
-    back.addEventListener('click', () => {
-        history.back()
-    })
+    if(back){
+        back.addEventListener('click', () => {
+            console.log(back)
+            history.back()
+        })
+    }
 })

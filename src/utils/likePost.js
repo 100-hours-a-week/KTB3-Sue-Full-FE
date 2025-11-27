@@ -21,7 +21,7 @@ export async function like(post_id, user_id){
 
         console.log(`likeData: ${likeData}`)
 
-        likeButton.style.backgroundColor = "#ACA0EB";
+        likeButton.style.backgroundColor = "#878080";
 
         increaseLikeCount()
         

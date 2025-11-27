@@ -1,7 +1,10 @@
+import { noticeHelperMessage, checkEmail, checkPassword } from "./formValidation.js"
+
 const form = document.querySelector('#login-form')
-const emailInput = document.querySelector('#email')
-const passwordInput = document.querySelector('#password')
+const emailInput = document.querySelector('#email-input')
+const passwordInput = document.querySelector('#password-input')
 const loginButton = document.querySelector('.loginButton')
+const signupLink = document.querySelector('.goToSignUp')
 
 let passEmailForm = false
 let passPasswordForm = false
@@ -12,7 +15,7 @@ let passPasswordForm = false
 emailInput.addEventListener('change', (e)=>{
     e.preventDefault()
 
-    passEmailForm = checkEmail(emailInput.value.trim())
+    passEmailForm = checkEmail(emailInput.value.trim(), false)
 })
 
 passwordInput.addEventListener('change', (e) => {
@@ -25,69 +28,15 @@ form.addEventListener('change', (e) => {
     e.preventDefault()
 
     if(passEmailForm && passPasswordForm){
-        loginButton.style.backgroundColor = "#7F6AEE"
+        loginButton.style.backgroundColor = "#635A5A"
     }
 })
 
-function checkEmail(email){
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+// signupLink.addEventListener('click', (e) => {
+//     e.preventDefault()
 
-    document.querySelectorAll('.email-helper-text').forEach(el => el.remove())
-    
-    if(email === ""){
-        // *이메일을 입력해주세요.'
-        noticeHelperMessage('*이메일을 입력해주세요.' , 'email')
-        return false
-    }
-
-    if(!emailRegex.test(email)){
-        noticeHelperMessage('*올바른 이메일 주소 형식을 입력해주세요. (예: example@example.com)', 'email')
-    }
-    
-
-    return true
-}
-
-function checkPassword(password){
-
-    const pass = /^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[!@~]).{8,20}$/
-    
-    document.querySelectorAll('.password-helper-text').forEach(el => el.remove())
-
-    if(password === ""){
-        noticeHelperMessage('*비밀번호를 입력해주세요.', 'password')
-        return false
-    }
-
-    if(!pass.test(password) || password.length < 8 || password.length > 20){
-        noticeHelperMessage(`
-            *비밀번호는 8자 이상, 20자 이하이며, 
-            대문자, 소문자, 숫자, 특수문자를 각각 최소 1개 포함해야 합니다.`
-            , 'password')
-        return false
-    }
-
-    return true
-}
-
-function noticeHelperMessage(message, selector){
-    const helperText = document.createElement('p')
-
-    helperText.textContent = message
-    helperText.className = `${selector}-helper-text`
-    helperText.style.fontSize = '12px'
-    helperText.style.fontWeight = '400'
-    helperText.style.color = '#FF0000'
-    helperText.style.maxWidth = '355px' 
-    helperText.style.margin = '0'
-    helperText.style.padding = '0'
-    helperText.style.position = 'absolute'
-    helperText.style.top = '110%'
-
-    const parent = document.querySelector(`#${selector}`)
-    parent.after(helperText)
-}
-
+//     route()
+// })
 
 // login api
 
@@ -111,7 +60,7 @@ loginButton.addEventListener('click', async (e) => {
 
         if(!response.ok){
             noticeHelperMessage(`*아이디와 비밀번호를 확인해주세요.`
-            , 'password')
+            , 'password','110%')
             return
         }
 

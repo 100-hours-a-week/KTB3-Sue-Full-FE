@@ -6,12 +6,14 @@
     <title>Focus Place</title>
     <link rel="stylesheet" href="../../index.css">
     <link rel="stylesheet" href="../styles/posts.css">
+    <script type="module" src="/src/utils/backButton.js"></script>
     <script type="module" src="/src/utils/profileEditModal.js"></script>
     <script type="module" src="/src/utils/loadProfile.js"></script>
-    <script type="module" src="/src/utils/postListRead.js"></script>
+    <script type="module" src="/src/utils/loadMyPostList.js"></script>
 </head>
 <body>
      <div class="header">
+        <button class="backButton">&lt;</button>
         <p class="title">Focus Place</p>
         <div class="user-profile-edit-container">
             <p class="settings">Settings</p>
@@ -31,6 +33,7 @@
             <button class="write-post-button">게시글 작성</button>
         </div>
         <div class="post-section">
+            <p class="my-page-title">My Posts</p>
             <div class="post-list" id="post-list-container">
             </div>
         </div>

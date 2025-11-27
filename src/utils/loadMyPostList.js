@@ -1,6 +1,7 @@
 import { renderPosts } from "./renderPosts.js"
+
 document.addEventListener('DOMContentLoaded', () => {
-    loadPosts()
+    loadMyPosts()
 
     const postWriteButton = document.querySelector('.write-post-button')
     if(postWriteButton){
@@ -12,11 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-async function loadPosts(){
+async function loadMyPosts(){
+    const urlParams = new URLSearchParams(window.location.search)
+    const user_id = urlParams.get('user_id')
+
+    console.log(user_id)
+
     try {
         const page = 0
         const size = 10
-        const response = await fetch(`http://localhost:8080/posts?page=${page}&size=${size}`, {
+        const response = await fetch(`http://localhost:8080/posts/author/${user_id}?page=${page}&size=${size}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json"
@@ -39,4 +45,3 @@ async function loadPosts(){
         console.log(`load posts error ${error}`)
     }
 }
-

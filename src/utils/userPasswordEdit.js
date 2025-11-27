@@ -44,7 +44,7 @@ function checkPassword(password){
     document.querySelectorAll('.user-password-input-helper-text').forEach(el => el.remove())
 
     if(password === ""){
-        noticeHelperMessage('*비밀번호를 입력해주세요.', 'user-password-input', '42%')
+        noticeHelperMessage('*비밀번호를 입력해주세요.', 'user-password-input', '43%')
         return false
     }
 
@@ -64,7 +64,7 @@ function checkPasswordConfirm(password, passwordConfirm){
     document.querySelectorAll('.user-password-confirm-input-helper-text').forEach(el => el.remove())
 
     if(passwordConfirm === ""){
-        noticeHelperMessage('*비밀번호를 한번더 입력해주세요', 'user-password-confirm-input', '52%')
+        noticeHelperMessage('*비밀번호를 한번더 입력해주세요', 'user-password-confirm-input', '53%')
         return false
     }
 

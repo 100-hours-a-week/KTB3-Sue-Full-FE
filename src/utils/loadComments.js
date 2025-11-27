@@ -119,6 +119,8 @@ commentButton.addEventListener('click', (e) => {
     if(e.target.dataset.action === 'write'){
         write(comment_content)
         commentInput.value = ""
+        fillCommentContent = false
+        changeButtonColor()
     } else {
         const comment_id = e.target.dataset.id
         update(comment_id, comment_content)
@@ -134,8 +136,8 @@ commentInput.addEventListener('focusout', (e) => {
 
 function changeButtonColor(){
     if(fillCommentContent){
-        commentButton.style.backgroundColor = "#7F6AEE"
+        commentButton.style.backgroundColor = "#635A5A"
     } else {
-        commentButton.style.backgroundColor = "#ACA0EB"
+        commentButton.style.backgroundColor = "#878080"
     }
 }

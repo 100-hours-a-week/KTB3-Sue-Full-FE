@@ -24,7 +24,7 @@ function logout(){
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const profileEditContainer = document.querySelector(".user-profile-container")
+    const profileEditContainer = document.querySelector(".user-profile-edit-container")
 
     profileEditContainer.addEventListener('mouseenter', showProfileEditMenus)
     profileEditContainer.addEventListener('mouseleave', hideProfileEditMenus)

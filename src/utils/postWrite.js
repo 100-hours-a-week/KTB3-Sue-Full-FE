@@ -76,9 +76,9 @@ function noticeHelperMessage(message, selector, top){
 function changeButtonColor(){
     const postWriteSubmitButton = document.querySelector('#post-write-submit-button')
     if(fillPostTitle && fillPostContent){
-        postWriteSubmitButton.style.backgroundColor = '#7F6AEE'
+        postWriteSubmitButton.style.backgroundColor = '#635A5A'
     } else {
-        postWriteSubmitButton.style.backgroundColor = '#ACA0EB'
+        postWriteSubmitButton.style.backgroundColor = '#878080'
     }
 }
 

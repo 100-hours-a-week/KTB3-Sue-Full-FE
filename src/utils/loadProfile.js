@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(stored)
     const userInfo = JSON.parse(stored)
 
-    const profileImage = document.querySelector('.user-profile-image')
+    const profileImage = document.querySelector('.user-info-profile-image')
 
     console.log(userInfo)
 
@@ -14,4 +14,21 @@ document.addEventListener('DOMContentLoaded', () => {
         profileImage.style.display = 'block'
 
     }
+
+    const nickname = document.querySelector('#user-info-nickname')
+    const nicknameData = userInfo.nickname
+    if(nicknameData){
+        nickname.textContent = nicknameData
+    }
+})
+
+const userProfileImageContainer = document.querySelector('.user-info-profile-image')
+userProfileImageContainer.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    const stored = localStorage.getItem('user')
+    const userInfo = JSON.parse(stored)
+    const user_id = userInfo.id
+
+    window.location.href = `/src/pages/myPage.html?user_id=${user_id}`
 })
