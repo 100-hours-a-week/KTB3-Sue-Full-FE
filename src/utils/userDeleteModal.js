@@ -1,5 +1,4 @@
-let newProfileimage;
-
+import { removeProfileImage } from "./profileImageProcess.js";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault()
@@ -53,8 +52,6 @@ async function userDelete(){
         const data = await response.json()
 
         const userResponse = data.data
-
-        console.log(userResponse)
 
         localStorage.removeItem('user')
 

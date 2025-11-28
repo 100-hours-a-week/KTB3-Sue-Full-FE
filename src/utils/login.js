@@ -60,7 +60,7 @@ loginButton.addEventListener('click', async (e) => {
 
         if(!response.ok){
             noticeHelperMessage(`*아이디와 비밀번호를 확인해주세요.`
-            , 'password','110%')
+            , 'password-input','110%')
             return
         }
 

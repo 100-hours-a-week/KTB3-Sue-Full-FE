@@ -54,7 +54,6 @@ const nicknameInput = document.querySelector('#user-info-nickname')
 nicknameInput.addEventListener('focusout', (e) => {
     e.preventDefault()
 
-    // 닉네임 검증 로직 짜기
     passNicknameForm = checkNickname(nicknameInput.value.trim())
 
 })
@@ -69,7 +68,7 @@ profileImageEditContainer.addEventListener('click',()=>{
 
 const profileImageInput = document.querySelector('#user-info-profile-image-input')
     
-profileImageInput.addEventListener('change', (e) => {
+profileImageInput.addEventListener('input', async (e) => {
 
     const profileImagePreview = document.querySelector('.user-info-profile-image')
 
@@ -121,10 +120,10 @@ async function userInfoEdit(){
             alert(`회원 정보 수정 실패`)
             return
         }
+        
+        const updateData = await response.json()
 
-        const data = await response.json()
-
-        const profile = data.data
+        const profile = updateData.data
 
         localStorage.setItem("user", JSON.stringify({
             id: userInfo.id,

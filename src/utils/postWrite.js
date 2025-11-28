@@ -32,6 +32,9 @@ postWriteFileButton.addEventListener('click', () => {
 
 const fileInput = document.querySelector('#post-write-image')
 fileInput.addEventListener('change', (e) => {
+    if(e.target.files.length > 3){
+        noticeHelperMessage('*이미지는 최대 3개까지 첨부 가능합니다.', 'post-write-image', '76%')
+    }
     const selectedFile = e.target.files[0]
 
     const fileSpan = document.querySelector('#post-write-file-span')
