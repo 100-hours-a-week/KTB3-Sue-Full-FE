@@ -1,5 +1,3 @@
-import { supabase } from "./storage/supabase.js"
-
 document.addEventListener('DOMContentLoaded', () => {
     const stored = localStorage.getItem('user')
 

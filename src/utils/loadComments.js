@@ -60,7 +60,7 @@ function renderCommentList(commentList, user_id){
 
         if(comment.user_profileImage){
             profileImageHtml = `
-            <img src="http://localhost:8080/upload/profileImage/${comment.user_profileImage}" class="comment-author-profile-image">
+            <img src="https://focus-place-profile-image.s3.ap-northeast-2.amazonaws.com/${comment.user_profileImage}" class="comment-author-profile-image">
             `
         } else {
             profileImageHtml = `
