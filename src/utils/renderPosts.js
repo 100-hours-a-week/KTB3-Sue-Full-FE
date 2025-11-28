@@ -18,7 +18,7 @@ export function renderPosts(posts){
 
         if(post.authorProfileImage){
             profileImageHtml = `
-            <img src="http://localhost:8080/upload/profileImage/${post.authorProfileImage}" class="author-profile-image">
+            <img src="https://focus-place-profile-image.s3.ap-northeast-2.amazonaws.com/${post.authorProfileImage}" class="author-profile-image">
             `
         } else {
             profileImageHtml = `
@@ -43,7 +43,7 @@ export function renderPosts(posts){
 
         if(post.images && post.images.length > 0){
             postImageHtml = `
-                <img src="http://localhost:8080/upload/postImage/${post.images[0].image_url}" class="post-image" alt="error">
+                <img src="https://focus-place-profile-image.s3.ap-northeast-2.amazonaws.com/${post.images[0].image_url}" class="post-image" alt="error">
             `  
         }
 

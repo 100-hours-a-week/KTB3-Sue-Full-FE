@@ -105,7 +105,7 @@ async function renderPost(post, isWritten){
 
     if(post.authorProfileImage){
         profileImageHtml = `
-            <img src="http://localhost:8080/upload/profileImage/${post.authorProfileImage}" class="author-profile-image">
+            <img src="https://focus-place-profile-image.s3.ap-northeast-2.amazonaws.com/${post.authorProfileImage}" class="author-profile-image">
             `
     } else {
         profileImageHtml = `
@@ -130,7 +130,7 @@ async function renderPost(post, isWritten){
     if(post.images && post.images.length > 0){
         console.log(post.images[0].image_url)
         postImageHtml = `
-            <img src="http://localhost:8080/upload/postImage/${post.images[0].image_url}" class="post-image-img" alt="error">
+            <img src="https://focus-place-profile-image.s3.ap-northeast-2.amazonaws.com/${post.images[0].image_url}" class="post-image-img" alt="error">
         `  
     }  
 

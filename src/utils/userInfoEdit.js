@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const profileImageUrl = userInfo.profileImage
     console.log(profileImageUrl)
     if(profileImageUrl){
-        profileImage.src = `http://localhost:8080/upload/profileImage/${profileImageUrl}`
+        profileImage.src = `https://focus-place-profile-image.s3.ap-northeast-2.amazonaws.com/${profileImageUrl}`
         profileImage.style.display = 'block'
     }
 
@@ -68,7 +68,7 @@ profileImageEditContainer.addEventListener('click',()=>{
 
 const profileImageInput = document.querySelector('#user-info-profile-image-input')
     
-profileImageInput.addEventListener('input', async (e) => {
+profileImageInput.addEventListener('change', async (e) => {
 
     const profileImagePreview = document.querySelector('.user-info-profile-image')
 
@@ -124,6 +124,8 @@ async function userInfoEdit(){
         const updateData = await response.json()
 
         const profile = updateData.data
+
+        console.log(profile)
 
         localStorage.setItem("user", JSON.stringify({
             id: userInfo.id,

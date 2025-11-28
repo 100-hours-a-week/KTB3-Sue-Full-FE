@@ -31,7 +31,7 @@ profileImageInputDiv.addEventListener('click', (e) => {
     profileImageInput.click()
 })
 
-profileImageInput.addEventListener('input', (e) => {
+profileImageInput.addEventListener('change', (e) => {
     e.preventDefault()
 
     const profileImagePreview = document.querySelector('.signup-profile-image')

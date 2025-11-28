@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const profileImageUrl = userInfo.profileImage
     if(profileImageUrl){
-        profileImage.src = `http://localhost:8080/upload/profileImage/${profileImageUrl}`
+        profileImage.src = `https://focus-place-profile-image.s3.ap-northeast-2.amazonaws.com/${profileImageUrl}`
         profileImage.style.display = 'block'
 
     }
