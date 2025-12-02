@@ -34,7 +34,7 @@ export async function checkEmail(email, duplicateCheck){
 
     if(duplicateCheck){
         try{
-            const response = await fetch("http://localhost:8080/accounts/email", {
+            const response = await fetch("http://localhost:8080/api/accounts/email", {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
@@ -124,7 +124,7 @@ export async function checkNickname(nickname){
     }
 
     try{
-        const response = await fetch("http://localhost:8080/accounts/nickname", {
+        const response = await fetch("http://localhost:8080/api/accounts/nickname", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

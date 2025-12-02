@@ -113,7 +113,7 @@ async function write(){
     console.log(formData)
 
     try {
-        const response = await fetch('http://localhost:8080/posts', {
+        const response = await fetch('http://localhost:8080/api/posts', {
             method: 'POST',
             body: formData
         })

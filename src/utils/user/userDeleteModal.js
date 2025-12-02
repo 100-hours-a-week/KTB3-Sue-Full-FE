@@ -37,7 +37,7 @@ async function userDelete(){
     const user_id = userInfo.id
 
     try {
-        const response = await fetch(`http://localhost:8080/accounts/${user_id}`, {
+        const response = await fetch(`http://localhost:8080/api/accounts/${user_id}`, {
             method: 'DELETE',
             headers: {
                     'Content-Type': 'application/json'

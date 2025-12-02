@@ -40,7 +40,7 @@ export async function update(comment_id, content){
     const user_id = userInfo.id
 
     try{
-        const response = await fetch(`http://localhost:8080/posts/${post_id}/comments/${comment_id}`, {
+        const response = await fetch(`http://localhost:8080/api/posts/${post_id}/comments/${comment_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

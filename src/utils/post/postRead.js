@@ -1,4 +1,4 @@
-import { initPostModalEvents } from "./modal.js";
+import { initPostModalEvents } from "../modal.js";
 import { checkLike, like, unlike } from "./likePost.js";
 import { deletePost } from "./postDelete.js";
   // 좋아요 여부 저장
@@ -36,7 +36,7 @@ deletePostConfirmButton.addEventListener('click', deletePost)
 async function checkPostingByUser(post_id, user_id){
 
     try {
-        const response = await fetch(`http://localhost:8080/posts/${post_id}/check?user_id=${user_id}`, {
+        const response = await fetch(`http://localhost:8080/api/posts/${post_id}/check?user_id=${user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ async function loadPost(){
     const user_id = userInfo.id
 
     try {
-        const response = await fetch(`http://localhost:8080/posts/${post_id}`, {
+        const response = await fetch(`http://localhost:8080/api/posts/${post_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

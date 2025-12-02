@@ -8,7 +8,7 @@ export async function write(content){
 
     console.log(user_id)
     try {
-        const response = await fetch(`http://localhost:8080/posts/${post_id}/comments`, {
+        const response = await fetch(`http://localhost:8080/api/posts/${post_id}/comments`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

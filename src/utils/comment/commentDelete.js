@@ -1,4 +1,4 @@
-import { showCommentDeleteModal, hideCommentDeleteModal } from "./modal.js"
+import { showCommentDeleteModal, hideCommentDeleteModal } from "../modal.js"
 
 let currentDeleteCommentId = null
 
@@ -29,7 +29,7 @@ async function deleteComment(comment_id){
     const user_id = userInfo.id
 
     try{
-        const response = await fetch(`http://localhost:8080/posts/${post_id}/comments/${currentDeleteCommentId}`, {
+        const response = await fetch(`http://localhost:8080/api/posts/${post_id}/comments/${currentDeleteCommentId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

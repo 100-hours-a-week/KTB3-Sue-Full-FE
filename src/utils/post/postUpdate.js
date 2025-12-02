@@ -9,7 +9,7 @@ async function loadPostData(){
     console.log(post_id)
 
     try {
-        const response = await fetch(`http://localhost:8080/posts/${post_id}`, {
+        const response = await fetch(`http://localhost:8080/api/posts/${post_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -113,7 +113,7 @@ async function update() {
     console.log(formData)
 
     try {
-        const response = await fetch(`http://localhost:8080/posts/${post_id}`, {
+        const response = await fetch(`http://localhost:8080/api/posts/${post_id}`, {
             method: 'PATCH',
             body: formData
         })

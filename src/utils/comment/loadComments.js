@@ -1,4 +1,4 @@
-import { hideCommentDeleteModal } from "./modal.js"
+import { hideCommentDeleteModal } from "../modal.js"
 import { write } from "./commentWrite.js"
 import { update } from "./commentUpdate.js"
 
@@ -21,7 +21,7 @@ async function loadComments() {
     const user_id = userInfo.id
 
     try{
-        const response = await fetch(`http://localhost:8080/posts/${post_id}/comments?page=0&size=10&direction=desc`, {
+        const response = await fetch(`http://localhost:8080/api/posts/${post_id}/comments?page=0&size=10&direction=desc`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

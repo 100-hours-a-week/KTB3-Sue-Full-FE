@@ -118,7 +118,7 @@ async function editPassword(){
     const newPasswordConfirm = passwordConfirmInput.value.trim()
 
     try {
-        const response = await fetch(`http://localhost:8080/accounts/${user_id}/password`, {
+        const response = await fetch(`http://localhost:8080/api/accounts/${user_id}/password`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"

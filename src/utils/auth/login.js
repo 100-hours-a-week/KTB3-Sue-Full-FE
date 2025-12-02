@@ -50,7 +50,7 @@ loginButton.addEventListener('click', async (e) => {
     console.log(password)
 
     try {
-        const response = await fetch('http://localhost:8080/accounts', {
+        const response = await fetch('http://localhost:8080/api/accounts', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

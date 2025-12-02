@@ -22,7 +22,7 @@ async function loadMyPosts(){
     try {
         const page = 0
         const size = 10
-        const response = await fetch(`http://localhost:8080/posts/author/${user_id}?page=${page}&size=${size}`, {
+        const response = await fetch(`http://localhost:8080/api/posts/author/${user_id}?page=${page}&size=${size}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json"

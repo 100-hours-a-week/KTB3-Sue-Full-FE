@@ -111,7 +111,7 @@ async function userInfoEdit(){
 
     console.log(formData)
     try{
-        const response = await fetch(`http://localhost:8080/accounts/userinfo`, {
+        const response = await fetch(`http://localhost:8080/api/accounts/userinfo`, {
             method: 'PUT',
             body: formData
         })
@@ -161,7 +161,7 @@ async function checkNickname(nickname){
 
     if(nickname !== nicknameInput.placeholder){
         try{
-            const response = await fetch('http://localhost:8080/accounts/nickname', {
+            const response = await fetch('http://localhost:8080/api/accounts/nickname', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

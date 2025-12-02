@@ -130,7 +130,7 @@ async function signup(){
 
 
     try {
-        const response = await fetch('http://localhost:8080/accounts/user', {
+        const response = await fetch('http://localhost:8080/api/accounts/user', {
             method: "POST",
             body: formData
         })
