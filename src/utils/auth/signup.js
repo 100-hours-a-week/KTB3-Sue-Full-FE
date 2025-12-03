@@ -66,7 +66,7 @@ emailInput.addEventListener('focusout', (e) => {
         return
     }
 
-    passEmailForm = checkEmail(emailInput.value.trim())
+    passEmailForm = checkEmail(emailInput.value.trim(), true)
     changeButtonColor()
 })
 

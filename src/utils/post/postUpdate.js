@@ -8,11 +8,18 @@ async function loadPostData(){
 
     console.log(post_id)
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         })
 
@@ -112,9 +119,18 @@ async function update() {
 
     console.log(formData)
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}`, {
             method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
             body: formData
         })
 

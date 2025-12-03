@@ -28,11 +28,18 @@ async function deleteComment(comment_id){
     const userInfo = JSON.parse(stored)
     const user_id = userInfo.id
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try{
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}/comments/${currentDeleteCommentId}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ user_id })
         })

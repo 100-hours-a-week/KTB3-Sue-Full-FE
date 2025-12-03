@@ -113,6 +113,11 @@ async function editPassword(){
 
     const user_id = userInfo.id
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
 
     const newPassword = passwordInput.value.trim()
     const newPasswordConfirm = passwordConfirmInput.value.trim()
@@ -121,7 +126,8 @@ async function editPassword(){
         const response = await fetch(`http://localhost:8080/api/accounts/${user_id}/password`, {
             method: 'PUT',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ newPassword, newPasswordConfirm })
         })

@@ -6,12 +6,19 @@ export async function write(content){
     const userInfo = JSON.parse(stored)
     const user_id = userInfo.id
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     console.log(user_id)
     try {
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}/comments`, {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ user_id, content })
         })
@@ -44,7 +51,7 @@ function writeCommentRender(comment){
 
     if(comment.user_profileImage){
         profileImageHtml = `
-         <img src="http://localhost:8080/upload/profileImage/${comment.user_profileImage}" class="comment-author-profile-image">
+         <img src="https://focus-place-profile-image.s3.ap-northeast-2.amazonaws.com/${comment.user_profileImage}" class="comment-author-profile-image">
         `
     } else {
         profileImageHtml = `

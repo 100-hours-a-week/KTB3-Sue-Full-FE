@@ -112,9 +112,18 @@ async function write(){
 
     console.log(formData)
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const response = await fetch('http://localhost:8080/api/posts', {
             method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
             body: formData
         })
 

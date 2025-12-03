@@ -1,5 +1,3 @@
-import { removeProfileImage } from "./profileImageProcess.js";
-
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault()
 
@@ -36,11 +34,18 @@ async function userDelete(){
 
     const user_id = userInfo.id
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const response = await fetch(`http://localhost:8080/api/accounts/${user_id}`, {
             method: 'DELETE',
             headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
             }
         })
 

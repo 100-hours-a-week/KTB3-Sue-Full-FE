@@ -1,10 +1,18 @@
 export async function like(post_id, user_id){
     const likeButton = document.querySelector('#likePostButton')
+    
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try{
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}/likes`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ user_id })
         })
@@ -34,11 +42,18 @@ export async function like(post_id, user_id){
 export async function unlike(post_id, user_id){
     const likeButton = document.querySelector('#likePostButton')
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}/likes`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ user_id })
         })
@@ -66,11 +81,18 @@ export async function unlike(post_id, user_id){
 
 export async function getLikeCount(post_id){
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}/likes`, {
             method: "GET",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         })
 
@@ -89,11 +111,18 @@ export async function getLikeCount(post_id){
 export async function checkLike(post_id, user_id){
     console.log(post_id)
     console.log(user_id)
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}/likes/check?user_id=${user_id}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         })
 

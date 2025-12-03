@@ -35,11 +35,18 @@ deletePostConfirmButton.addEventListener('click', deletePost)
 
 async function checkPostingByUser(post_id, user_id){
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}/check?user_id=${user_id}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
             }
         })
 
@@ -66,11 +73,18 @@ async function loadPost(){
     const userInfo = JSON.parse(stored)
     const user_id = userInfo.id
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
             }
         })
 

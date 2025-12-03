@@ -39,11 +39,18 @@ export async function update(comment_id, content){
     const userInfo = JSON.parse(stored)
     const user_id = userInfo.id
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try{
         const response = await fetch(`http://localhost:8080/api/posts/${post_id}/comments/${comment_id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ user_id, content })
         })

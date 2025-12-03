@@ -19,18 +19,25 @@ async function loadMyPosts(){
 
     console.log(user_id)
 
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try {
         const page = 0
         const size = 10
         const response = await fetch(`http://localhost:8080/api/posts/author/${user_id}?page=${page}&size=${size}`, {
             method: 'GET',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             }
         })
 
         if(!response.ok){
-            aler(`게시물 목록 불러오기 실패`)
+            alert(`게시물 목록 불러오기 실패`)
             return
         }
 

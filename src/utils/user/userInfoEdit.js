@@ -102,6 +102,7 @@ async function userInfoEdit(){
     const currentProfileImage = userInfo.profileImage
     const newProfileImage = profileImageInput.files[0]
 
+
     const formData = new FormData()
     formData.append("user_id", user_id)
     formData.append("currentNickname", currentNickname)
@@ -110,9 +111,19 @@ async function userInfoEdit(){
     formData.append("newProfileImage", newProfileImage)
 
     console.log(formData)
+
+    const token = localStorage.getItem("accessToken")
+    if(!token){
+        alert('token not fount')
+        return
+    }
+
     try{
         const response = await fetch(`http://localhost:8080/api/accounts/userinfo`, {
             method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
             body: formData
         })
 
