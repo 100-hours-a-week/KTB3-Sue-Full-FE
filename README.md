@@ -16,3 +16,10 @@
 - **기타**:
   - 브라우저 Local Storage (JWT Access Token & 유저 정보 저장)
   - 모듈 시스템: ES Modules (`type="module"`)
+
+## 주요 기능
+- 회원 가입 / 로그인
+- 게시물 조회 / 작성 / 수정 / 삭제
+- 댓글 작성 / 수정 / 삭제
+- 좋아요
+
