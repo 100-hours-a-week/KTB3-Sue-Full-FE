@@ -7,6 +7,8 @@
 순수 HTML/CSS/Vanilla JS로 구현된 웹 애플리케이션으로,  
 백엔드 REST API와 통신하여 로그인, 회원가입, 게시글 조회, 작성, 수정, 삭제 등의 기능을 제공합니다.
 
+## 참여자
+
 ## 🧰 Tech Stack
 
 - **Language**: HTML, CSS, JavaScript (ES6+)
@@ -23,3 +25,4 @@
 - 댓글 작성 / 수정 / 삭제
 - 좋아요
 
+## 프로젝트 폴더 구조
