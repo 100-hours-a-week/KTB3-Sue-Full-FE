@@ -1,6 +1,8 @@
 export function noticeHelperMessage(message, selector, top){
     const helperText = document.createElement('p')
 
+    document.querySelectorAll(`.${selector}-helper-text`).forEach(el => el.remove())
+
     helperText.textContent = message
     helperText.className = `${selector}-helper-text`
     helperText.style.fontSize = '12px'
