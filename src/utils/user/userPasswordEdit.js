@@ -52,7 +52,7 @@ function checkPassword(password){
         noticeHelperMessage(`
             *비밀번호는 8자 이상, 20자 이하이며, 
             대문자, 소문자, 숫자, 특수문자를 각각 최소 1개 포함해야 합니다.`
-            , 'user-password-input', '42%')
+            , 'user-password-input', '43%')
         return false
     }
 
@@ -69,7 +69,7 @@ function checkPasswordConfirm(password, passwordConfirm){
     }
 
     if(password !== passwordConfirm){
-        noticeHelperMessage('*비밀번호가 다릅니다.', 'user-password-confirm-input', '52%')
+        noticeHelperMessage('*비밀번호가 다릅니다.', 'user-password-confirm-input', '53%')
         return false
     }
 
