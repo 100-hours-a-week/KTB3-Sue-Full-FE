@@ -26,3 +26,50 @@
 - 좋아요
 
 ## 프로젝트 폴더 구조
+📦src
+ ┣ 📂pages
+ ┃ ┣ 📜myPage.html
+ ┃ ┣ 📜postDetail.html
+ ┃ ┣ 📜postUpdate.html
+ ┃ ┣ 📜postWrite.html
+ ┃ ┣ 📜posts.html
+ ┃ ┣ 📜signup.html
+ ┃ ┣ 📜userInfoEdit.html
+ ┃ ┗ 📜userPasswordEdit.html
+ ┣ 📂styles
+ ┃ ┣ 📜login.css
+ ┃ ┣ 📜postDetail.css
+ ┃ ┣ 📜postUpdate.css
+ ┃ ┣ 📜postWrite.css
+ ┃ ┣ 📜posts.css
+ ┃ ┣ 📜signup.css
+ ┃ ┣ 📜userInfoEdit.css
+ ┃ ┗ 📜userPasswordEdit.css
+ ┗ 📂utils
+ ┃ ┣ 📂auth
+ ┃ ┃ ┣ 📜formValidation.js
+ ┃ ┃ ┣ 📜loadProfile.js
+ ┃ ┃ ┣ 📜login.js
+ ┃ ┃ ┗ 📜signup.js
+ ┃ ┣ 📂comment
+ ┃ ┃ ┣ 📜commentDelete.js
+ ┃ ┃ ┣ 📜commentUpdate.js
+ ┃ ┃ ┣ 📜commentWrite.js
+ ┃ ┃ ┗ 📜loadComments.js
+ ┃ ┣ 📂post
+ ┃ ┃ ┣ 📜likePost.js
+ ┃ ┃ ┣ 📜loadMyPostList.js
+ ┃ ┃ ┣ 📜postDelete.js
+ ┃ ┃ ┣ 📜postListRead.js
+ ┃ ┃ ┣ 📜postRead.js
+ ┃ ┃ ┣ 📜postUpdate.js
+ ┃ ┃ ┣ 📜postWrite.js
+ ┃ ┃ ┗ 📜renderPosts.js
+ ┃ ┣ 📂user
+ ┃ ┃ ┣ 📜profileEditModal.js
+ ┃ ┃ ┣ 📜userDeleteModal.js
+ ┃ ┃ ┣ 📜userInfoEdit.js
+ ┃ ┃ ┗ 📜userPasswordEdit.js
+ ┃ ┣ 📜backButton.js
+ ┃ ┣ 📜commonRequest.js
+ ┃ ┗ 📜modal.js
