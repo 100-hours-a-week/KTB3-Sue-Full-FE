@@ -76,3 +76,9 @@ Sue의 Fullstack 프로젝트입니다.
  ┃ ┗ 📜modal.js
 
 ```
+
+## 데모 영상
+
+
+[![Video Label](http://img.youtube.com/vi/wUluGLl7QMY/0.jpg)](https://youtu.be/wUluGLl7QMY)
+
