@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Place</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="../styles/posts.css">
+    <script type="module" src="/src/utils/backButton.js"></script>
+    <script type="module" src="/src/utils/user/profileEditModal.js"></script>
+    <script type="module" src="/src/utils/auth/loadProfile.js"></script>
+    <script type="module" src="/src/utils/post/loadMyPostList.js"></script>
+</head>
+<body>
+     <div class="header">
+        <button class="backButton">&lt;</button>
+        <p class="title">Focus Place</p>
+        <div class="user-profile-edit-container">
+            <p class="settings">Settings</p>
+            <div class="user-profile-edit-modal hidden">
+                <p class="user-profile-edit-menu" id="user-info-edit-menu">회원정보수정</p>
+                <p class="user-profile-edit-menu" id="user-password-edit-menu">비밀번호수정</p>
+                <p class="user-profile-edit-menu" id="logout-menu">로그아웃</p>
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="profile-container">
+            <div class="user-profile-image-container">
+                <img class="user-info-profile-image" src="" alt="profile-image">
+            </div>
+            <p class="user-nickname" id="user-info-nickname">알 수 없는 유저</p>
+            <button class="write-post-button">게시글 작성</button>
+        </div>
+        <div class="post-section">
+            <p class="my-page-title">My Posts</p>
+            <div class="post-list" id="post-list-container">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

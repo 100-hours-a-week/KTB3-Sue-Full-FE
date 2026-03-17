@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아무말 대잔치</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="/src/styles/postUpdate.css">
+    <script type="module" src="/src/utils/backButton.js"></script>
+    <script type="module" src="/src/utils/user/profileEditModal.js"></script>
+    <script type="module" src="/src/utils/post/postUpdate.js"></script>
+</head>
+<body>
+    <div class="header">
+        <button class="backButton">&lt;</button>
+        <p class="title">Focus Place</p>
+        <div class="user-profile-edit-container">
+            <p class="settings">Settings</p>
+            <div class="user-profile-edit-modal hidden">
+                <p class="user-profile-edit-menu" id="user-info-edit-menu">회원정보수정</p>
+                <p class="user-profile-edit-menu" id="user-password-edit-menu">비밀번호수정</p>
+                <p class="user-profile-edit-menu" id="logout-menu">로그아웃</p>
+            </div>
+        </div>
+    </div>
+    <div class="post-update-container">
+        <p class="post-update-title">게시글 수정</p>
+        <form class="post-update-form">
+            <div class="post-update-input-container">
+                <label>제목*</label>
+                <hr class="bar"/>
+                <input id="post-update-title-input" name="title" type="text" maxlength="26" placeholder="제목">
+            </div>
+            <hr class="bar"/>
+            <div class="post-update-input-container">
+                <label>내용*</label>
+                <hr class="bar"/>
+                <textarea  id="post-update-content-input" name="content" placeholder="content"></textarea>
+            </div>
+            <hr class="bar"/>
+            <div class="post-update-input-container">
+                <label>이미지</label>
+                <div class="post-update-file-button-container">
+                    <button id="post-update-file-button" type="button">파일 선택</button>
+                    <span id="post-update-file-span"></span>
+                </div>
+                <input id="post-update-image" type="file" accept="image/*">
+            </div>
+        </form>
+        <button class="submitButton" type="button">수정하기</button>
+    </div>
+</body>
+</html>
